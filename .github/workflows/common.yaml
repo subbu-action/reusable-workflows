@@ -16,9 +16,9 @@ jobs:
    ci: #job name 
      runs-on: self-hosted 
      steps: 
-     - name: checkout code 
-       uses: actions/checkout@v5
+     - name: Checkout code 
+       uses: actions/checkout@v3
      - name: check the files 
        run: ls -l 
-     - name: print the inputs 
+     - name: Print the inputs 
        run: echo "project is ${{ inputs.project }}"                 
