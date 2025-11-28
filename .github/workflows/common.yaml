@@ -30,3 +30,5 @@ jobs:
        run: echo "VERSION=$(jq -r '.version' package.json)" >> "$GITHUB_OUTPUT"
      - name: print app version 
        run: echo ${{ steps.package-version.outputs.version }}                      
+     - name: install dependencies 
+       run: npm install 
