@@ -48,3 +48,16 @@ jobs:
        run: |
          aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 888947293288.dkr.ecr.us-east-1.amazonaws.com
          docker push 888947293288.dkr.ecr.us-east-1.amazonaws.com/${{ inputs.project }}/${{ inputs.component }}:${{ steps.package-version.outputs.version }}   
+
+   cd: 
+    runs-on: self-hosted 
+    needs: ci 
+    env: 
+      appVersion: ${{ needs.ci.outputs.appVersion }} 
+    steps: 
+    - name: Checkout code 
+      uses: actions/checkout@v5 
+      with: 
+        repository:  subbu-action/catalogue-deploy 
+    - name: check the files  
+      run: ls -l     
